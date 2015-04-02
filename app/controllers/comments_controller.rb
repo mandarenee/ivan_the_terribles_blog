@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def index
-    DatabaseWorker(:post_id)
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments.includes(:post)
 
     respond_to do |format|
       format.html # index.html.erb
