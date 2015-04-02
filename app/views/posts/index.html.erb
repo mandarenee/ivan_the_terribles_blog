@@ -12,14 +12,14 @@
     <section class="blog">
       <section class="post">
         <% @posts.each do |post| %>
-          <% cache post do %>
+
             <h2>Post <%= "#{post.id}: #{post.title}" %></h2>
             <div class="post"><%= post.body %></div>
               <div class="post_nav">
                 <%= link_to 'Show Comments', post %> |
               </div>
             <% post.comments.each do |comment| %>
-              <% cache comment do %>
+
                 <div class="comment">
                   <h3>Comment <%= comment.id %>:</h3>
                   <p><%= comment.body %></p>
@@ -30,8 +30,7 @@
                     <% end %>
                   </div>
                 </div>
-              <% end %>
-            <% end %>
+
           <% end %>
         <% end %>
       </section>
