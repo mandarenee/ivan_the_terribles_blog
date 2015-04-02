@@ -1,6 +1,5 @@
 class RepliesController < ApplicationController
-  # GET /replies
-  # GET /replies.json
+
   def index
     @replies = Reply.all
 
@@ -10,8 +9,6 @@ class RepliesController < ApplicationController
     end
   end
 
-  # GET /replies/1
-  # GET /replies/1.json
   def show
     @reply = Reply.find(params[:id])
 
@@ -21,8 +18,6 @@ class RepliesController < ApplicationController
     end
   end
 
-  # GET /replies/new
-  # GET /replies/new.json
   def new
     @reply = Reply.new
 
@@ -32,13 +27,10 @@ class RepliesController < ApplicationController
     end
   end
 
-  # GET /replies/1/edit
   def edit
     @reply = Reply.find(params[:id])
   end
 
-  # POST /replies
-  # POST /replies.json
   def create
     @reply = Reply.new(params[:reply])
 
@@ -53,8 +45,6 @@ class RepliesController < ApplicationController
     end
   end
 
-  # PUT /replies/1
-  # PUT /replies/1.json
   def update
     @reply = Reply.find(params[:id])
 
@@ -69,8 +59,6 @@ class RepliesController < ApplicationController
     end
   end
 
-  # DELETE /replies/1
-  # DELETE /replies/1.json
   def destroy
     @reply = Reply.find(params[:id])
     @reply.destroy
