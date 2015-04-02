@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
 
   def index
-    @replies = Reply.all
+    @replies = Reply.all.includes(:comment)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,7 +10,8 @@ class RepliesController < ApplicationController
   end
 
   def show
-    @reply = Reply.find(params[:id])
+    @reply = Reply.find(params[:id]).includes(:comment)
+
 
     respond_to do |format|
       format.html # show.html.erb

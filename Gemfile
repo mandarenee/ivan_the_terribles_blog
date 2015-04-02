@@ -31,3 +31,5 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'rack-mini-profiler', require: false
+gem 'cache_digests'
+gem 'sidekiq'

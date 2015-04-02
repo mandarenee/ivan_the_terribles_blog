@@ -2,7 +2,10 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all.joins(:post)
+    # @comments = Comment.all.joins(:post)
+    # @post = Post.find(params[:post_id])
+    # @comments = @post.comments.includes(:post)
+    DatabaseWorker(:post_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +16,10 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @comment = Comment.find(params[:id])
+    # @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    # @reply = @comment.replies.find(params[:comment_id])
 
     respond_to do |format|
       format.html # show.html.erb

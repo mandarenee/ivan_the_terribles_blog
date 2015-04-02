@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(comments: :replies)
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,6 +51,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        expire_fragment("post")
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
