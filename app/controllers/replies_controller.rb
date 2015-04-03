@@ -40,7 +40,7 @@ class RepliesController < ApplicationController
   # POST /replies
   # POST /replies.json
   def create
-    @reply = Reply.new(params[:reply])
+    @reply = Reply.new(reply_params)
 
     respond_to do |format|
       if @reply.save
@@ -59,7 +59,7 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
 
     respond_to do |format|
-      if @reply.update_attributes(params[:reply])
+      if @reply.update_attributes(reply_params)
         format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,11 @@ class RepliesController < ApplicationController
       format.html { redirect_to replies_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def reply_params
+    params.require(:reply).permit(:id, :body, :comment_id)
   end
 end

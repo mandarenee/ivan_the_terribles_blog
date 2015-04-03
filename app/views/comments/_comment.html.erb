@@ -1,6 +1,6 @@
 <div class="comment">
   <h3>Comment <%= comment.id %>:</h3>
-  <p><%= comment.body %></p>
+  <p><%= h(comment.body) %></p>
   <div class="reply">
     <%= render comment.replies %>
   </div>
