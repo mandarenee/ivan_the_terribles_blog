@@ -1,0 +1,15 @@
+# Ivan the Terrible's Blog!
+
+Ivan the Terrible designed a blog that shows EVERYTHING on the front page of the site! It was pretty slow, so I worked to make it a little quicker while preserving all of the content on the front of the page.
+
+When I originally opened the document, it was taking 70-80 seconds to load the page locally. Heroku wouldn't have any of it and timed out every time.
+
+[Load Impact results](https://www.dropbox.com/s/4hvr40pvfzb5ob9/Load.png?dl=0)
+
+This blog had some security holes, so I made some changes:
+-I moved the secret token to a hidden file and replaced it with a variable.
+-The erb statements on the views were injectible, so I added h().
+-I changed some of the render forms to symbols instead of strings so they are not mutable.
+-I added strong_params to protect from user input.
+-I changed the cookie store to an Active Record store to make the sessions more secure.
+-I changed other params' SQL searches to be more secure by replacing the params with a ? and separating the key value pair with a comma in an array.
